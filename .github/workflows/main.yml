@@ -20,6 +20,6 @@ jobs:
       - name: Accept Android SDK licenses and install build-tools
         run: |
           yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;33.0.0"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;36.1.0-rc1"
       - name: Build with Buildozer
         run: buildozer android debug
