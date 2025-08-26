@@ -7,10 +7,10 @@ version = 0.1
 source.dir = .
 source.exclude_dirs =
 main.py = main.py
-requirements = python3,kivy
+requirements = python,kivy,pillow,requests
 
 [android]
-android.api = 21
+android.api = 33
 android.arch = armeabi-v7a
 android.arch_aarch64 = arm64-v8a
 android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
