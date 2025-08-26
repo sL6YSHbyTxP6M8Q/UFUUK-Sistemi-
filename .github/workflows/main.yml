@@ -1,0 +1,23 @@
+name: Buildozer
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y git zip unzip build-essential libncursesw5-dev libgdbm-dev libc6-dev zlib1g-dev libsqlite3-dev tk-dev libssl-dev openssl libffi-dev libxml2-dev libxslt1-dev libjpeg8-dev libfreetype6-dev python3-pip python3-setuptools python3-wheel
+          pip3 install buildozer virtualenv
+
+      - name: Build with Buildozer
+        run: buildozer android debug
