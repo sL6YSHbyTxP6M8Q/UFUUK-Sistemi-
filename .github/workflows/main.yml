@@ -17,12 +17,9 @@ jobs:
           sudo apt-get install -y git zip unzip build-essential libncursesw5-dev libgdbm-dev libc6-dev zlib1g-dev libsqlite3-dev tk-dev libssl-dev openssl libffi-dev libxml2-dev libxslt1-dev libjpeg8-dev libfreetype6-dev python3-pip python3-setuptools python3-wheel
           pip3 install buildozer virtualenv
           pip3 install cython
-      - name: Accept Android SDK licenses
+      - name: Accept Android SDK licenses and install build-tools
         run: |
-          mkdir -p "$ANDROID_HOME/licenses"
-          echo "d975f74a98a76e01a4e21683431a4a4417482860" > "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "24d67384a7e93f35ef7a529a67e41152a5135607" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-          echo "8483b387e6c55030cfc46871a7d65012376a02e6" > "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "c8e123380b263a201639d91f274a49c49b0689b7" > "$ANDROID_HOME/licenses/android-sdk-license"
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "build-tools;33.0.0"
       - name: Build with Buildozer
         run: buildozer android debug
